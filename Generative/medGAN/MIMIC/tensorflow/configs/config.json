@@ -1,0 +1,20 @@
+{
+  "exp_name": "example",
+  "data_file": "~/data/PhisioNet/MIMIC/processed/out_binary.matrix",
+  "training": 1,
+  "num_epochs_pretrain": 100,
+  "train_autoencoder_on_real_data": 1,
+  "num_epochs": 1000,
+  "num_iter_per_epoch": 200,
+  "num_iter_per_test":200,
+  "learning_rate_autoencoder": 0.001,
+  "learning_rate": 0.0001,
+  "batch_size": 256,
+  "batch_size_test": 256,
+  "state_size": 1071,
+  "generator_noise_size": 128,
+  "max_to_keep":5,
+  "fineTuning":0,
+  "minibatch_discrimination":0,
+  "feature_matching":0
+}

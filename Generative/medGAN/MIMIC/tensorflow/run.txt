@@ -1,0 +1,1 @@
+example: python example.py -c configs/example.json
