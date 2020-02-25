@@ -27,7 +27,7 @@ Table of contents
 
 <!--ts-->
    * [Paper Summary](#paper-summary)
-   * [Aspects of The Work](#aspects)
+   * [Aspects of The Work](#aspects-of-the-work)
       * [Synthetic Data Generation](#sdg)
       * [Privacy - Membership Inference Attack](#privacy)
       * [Data Fidelity](#data-fidelity)
