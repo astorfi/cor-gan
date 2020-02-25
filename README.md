@@ -69,11 +69,8 @@ To demonstrate the model fidelity, we show that corGAN generates synthetic data 
 
 ### Synthetic Data Generation
 
-<img src="https://github.com/astorfi/cor-gan/blob/master/imgs/membershipattack.png" width="%20" height="%20" />
+<img src="https://github.com/astorfi/cor-gan/blob/master/imgs/gans.png" width="%10" height="%10" />
 
-![alt text][generative]
-
-[generative]: imgs/gans.png "Logo Title Text 2"
 
 ### Privacy - Membership Inference Attack
 
