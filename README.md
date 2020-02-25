@@ -21,12 +21,49 @@ For a detailed description of the architecture please read [our paper](https://a
     year={2020}
     }
 
-## Contributions
+## Paper Summary
 
-**Abstract:** *Deep learning models have demonstrated high-quality performance in areas such as image classification and speech processing.
+<details>
+<summary>Abstract</summary>
+
+*Deep learning models have demonstrated high-quality performance in areas such as image classification and speech processing.
 However, creating a deep learning model using electronic health record (EHR) data, requires addressing particular privacy challenges that are unique to researchers in this domain. This matter focuses attention on generating realistic synthetic data while ensuring privacy.
 In this paper, we propose a novel framework called correlation-capturing Generative Adversarial Network (corGAN), to generate synthetic healthcare records. In corGAN we utilize Convolutional Neural Networks to capture the correlations between adjacent medical features in the data representation space by combining Convolutional Generative Adversarial Networks and Convolutional Autoencoders.
 To demonstrate the model fidelity, we show that corGAN generates synthetic data with performance similar to that of real data in various Machine Learning settings such as classification and prediction. We also give a privacy assessment and report on statistical analysis regarding realistic characteristics of the synthetic data.*
+
+</details>
+
+<!-- <br>[⬆ Back to top](#contents) -->
+
+<!-- ### Abstract
+
+*Deep learning models have demonstrated high-quality performance in areas such as image classification and speech processing.
+However, creating a deep learning model using electronic health record (EHR) data, requires addressing particular privacy challenges that are unique to researchers in this domain. This matter focuses attention on generating realistic synthetic data while ensuring privacy.
+In this paper, we propose a novel framework called correlation-capturing Generative Adversarial Network (corGAN), to generate synthetic healthcare records. In corGAN we utilize Convolutional Neural Networks to capture the correlations between adjacent medical features in the data representation space by combining Convolutional Generative Adversarial Networks and Convolutional Autoencoders.
+To demonstrate the model fidelity, we show that corGAN generates synthetic data with performance similar to that of real data in various Machine Learning settings such as classification and prediction. We also give a privacy assessment and report on statistical analysis regarding realistic characteristics of the synthetic data.* -->
+
+<details>
+<summary>Motivation</summary>
+
+* Synthetic records helping stakeholders to *share and work* on data without privacy hurdles
+* Despite advances in *Synthetic Data Generation~(SDG)*. Research efforts mostly restricted to *limited use cases*
+* *Lack of clarity* regarding the synthetic data being realistic; and factors contributing to realism
+* Majority of methods for *supervised settings*
+* Lack of clarity in *measuring privacy*, and privacy guarantees
+* EHRs are *discrete* in nature. But most research is on *continuous* data
+
+</details>
+
+<details>
+<summary>Contribution</summary>
+
+* We propose an efficient architecture to generate synthetic healthcare records using **Convolutional GANs** and **Convolutional Autoencoders}~(CAs)** which we call ``corGAN``. We demonstrate that corGAN can effectively generate both *discrete* and *continuous* synthetic records.
+* We demonstrate the effectiveness of utilizing Convolutional Neural Networks~(CNNs) as opposed to Multilayer Perceptrons to capture inter-correlation between features.
+* We show that corGAN can generate realistic synthetic data that performs similarly to real data on classification tasks, according to  our analysis and assessments.
+* We report on a **privacy assessment** of the model and demonstrate that corGAN provides an acceptable level of privacy, by varying the amount of synthetically generated data and amount of data known to an adversary.
+
+</details>
+
 
 ## Running the Code
 
