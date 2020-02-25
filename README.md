@@ -69,7 +69,14 @@ To demonstrate the model fidelity, we show that corGAN generates synthetic data 
 
 ### Synthetic Data Generation
 
-<img src="https://github.com/astorfi/cor-gan/blob/master/imgs/gans.png" width="50%" height="50%" />
+<details>
+<summary>Details</summary>
+
+The discrete input $\boldsymbol{X}$ represents the source EHR data;~$\boldsymbol{z}$ is the random distribution for the generator $\boldsymbol{G}$; $\boldsymbol{G}$ is the employed neural network architecture; $\boldsymbol{Dec(G(z))}$ refers to the decoding function which is used to transform the generator $\boldsymbol{G}$ continuous output to their equivalent discrete values.~The discriminator $\boldsymbol{D}$ attempts to distinguish real input $\boldsymbol{X}$ from the discrete synthetic output $\boldsymbol{Dec(G(z))}$.~For the generator and the discriminator,~a 1-Dimensional Convolutional GAN architecture is utilized.
+
+</details>
+
+<img src="https://github.com/astorfi/cor-gan/blob/master/imgs/proposedarch.png" width="50%" height="50%" />
 
 
 ### Privacy - Membership Inference Attack
