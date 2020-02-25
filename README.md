@@ -65,6 +65,27 @@ To demonstrate the model fidelity, we show that corGAN generates synthetic data 
 </details>
 
 
+## Aspects of The Work
+
+### Synthetic Data Generation
+
+![alt text][generative]
+
+[generative]: imgs/gans.png "Logo Title Text 2"
+
+### Privacy - Membership Inference Attack
+
+![alt text][privacy]
+
+[privacy]: imgs/membershipattack.png "Logo Title Text 2"
+
+### Data Fidelity
+
+![alt text][fidelity]
+
+[fidelity]: imgs/datafidelity.png "Logo Title Text 2"
+
+
 ## Running the Code
 
 ### Prerequisites
