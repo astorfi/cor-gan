@@ -28,13 +28,13 @@ Table of contents
 <!--ts-->
    * [Paper Summary](#paper-summary)
    * [Aspects of The Work](#aspects-of-the-work)
-      * [Synthetic Data Generation](#sdg)
-      * [Privacy - Membership Inference Attack](#privacy)
+      * [Synthetic Data Generation](#Synthetic-Data-Generation)
+      * [Privacy - Membership Inference Attack](#Privacy-Membership-Inference-Attack)
       * [Data Fidelity](#data-fidelity)
-   * [Running the Code](#run-code)
-      * [Prerequisites](#prereq)
-      * [Datasets](#datasets)
-      * [Training](#training)
+   * [Running the Code](#Running-the-Code)
+      * [Prerequisites](#Prerequisites)
+      * [Datasets](#Datasets)
+      * [Training](#Training)
    * [Dependency](#dependency)
 <!--te-->
 
