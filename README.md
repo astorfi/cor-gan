@@ -152,7 +152,7 @@ To check the implementation refer to the folder ``Generative`` and you will see 
 
 ## Collaborators
 
-| [<img src="https://github.com/astorfi.png" width="100px;"/>](https://github.com/astorfi)<br/> [<sub>Amirsina Torfi</sub>](https://github.com/mohibeyki) | [<img src="https://github.com/mohibeyki.png" width="100px;"/>](https://github.com/fejes713)<br/> [<sub>Mohammadreza Beyki</sub>](https://github.com/fejes713) |
+| [<img src="https://github.com/astorfi.png" width="100px;"/>](https://github.com/astorfi)<br/> [<sub>Amirsina Torfi</sub>](https://github.com/astorfi) | [<img src="https://github.com/mohibeyki.png" width="100px;"/>](https://github.com/mohibeyki)<br/> [<sub>Mohammadreza Beyki</sub>](https://github.com/mohibeyki) |
 | --- | --- |
 
 <!-- ## Credit
