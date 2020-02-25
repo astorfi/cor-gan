@@ -29,13 +29,13 @@ Table of contents
    * [Paper Summary](#paper-summary)
    * [Aspects of The Work](#aspects-of-the-work)
       * [Synthetic Data Generation](#Synthetic-Data-Generation)
-      * [Privacy - Membership Inference Attack](#Privacy-Membership-Inference-Attack)
+      * [Privacy](#Privacy)
       * [Data Fidelity](#data-fidelity)
    * [Running the Code](#Running-the-Code)
       * [Prerequisites](#Prerequisites)
       * [Datasets](#Datasets)
       * [Training](#Training)
-   * [Dependency](#dependency)
+   * [Collaborators](#Collaborators)
 <!--te-->
 
 
@@ -149,3 +149,12 @@ To check the implementation refer to the folder ``Generative`` and you will see 
 * corGAN: The implementation of the paper with concolutional autoencoders and regular multi-layer perceptions for discriminator and generator.
 * corGAN: The implementation of the [medGAN paper](https://arxiv.org/abs/1703.06490) as one of the baselines. This is a reimplemetation of this medGAN in ``PyTorch`` as we could not reproduce the results with [their code](https://github.com/mp2893/medgan). Furthermore, **PyTorch is more flexible compare to TensorFlow for research!**
 * VAE: One of the the baselines.
+
+## Collaborators
+
+| [<img src="https://github.com/astorfi.png" width="100px;"/>](https://github.com/astorfi)<br/> [<sub>Amirsina Torfi</sub>](https://github.com/mohibeyki) | [<img src="https://github.com/mohibeyki.png" width="100px;"/>](https://github.com/fejes713)<br/> [<sub>Mohammadreza Beyki</sub>](https://github.com/fejes713) |
+| --- | --- |
+
+<!-- ## Credit
+
+This research conducted at [Virginia Tech](https://vt.edu/) under the supervision of [Dr. Edward A. Fox](http://fox.cs.vt.edu/foxinfo.html). -->
