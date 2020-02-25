@@ -10,7 +10,7 @@ For the following reason, this implementation *does not contain* the ``full impl
 * Ongoing research
 * The restrictions regarding this work.
 
-For a detailed description of the architecture please read [our paper](https://arxiv.org/abs/2001.09346). Using the code of this reposity is allowed with **proper attribution**: Please cite the paper if you use the code from this repository in your work.
+For a detailed description of the architecture please read [our paper](https://arxiv.org/abs/2001.09346). Using the code of this repository is allowed with **proper attribution**: Please cite the paper if you use the code from this repository in your work.
 
 ## Bibtex
 
@@ -20,6 +20,24 @@ For a detailed description of the architecture please read [our paper](https://a
     journal={arXiv preprint arXiv:2001.09346},
     year={2020}
     }
+
+
+Table of contents
+=================
+
+<!--ts-->
+   * [Paper Summary](#paper-summary)
+   * [Aspects of The Work](#aspects)
+      * [Synthetic Data Generation](#sdg)
+      * [Privacy - Membership Inference Attack](#privacy)
+      * [Data Fidelity](#data-fidelity)
+   * [Running the Code](#run-code)
+      * [Prerequisites](#prereq)
+      * [Datasets](#datasets)
+      * [Training](#training)
+   * [Dependency](#dependency)
+<!--te-->
+
 
 ## Paper Summary
 
@@ -99,9 +117,10 @@ Here, we will assume the adversary *has the synthetically generated data as well
 
 **Binary Classification:** We use this metric for our experiments  with  continuous  data. To  empirically  verify  the quality  of  the  synthetic  data,  we  consider  two  different settings. ``(A)`` Train and test the predictive models on the real data. ``(B)``train the predictive model on synthetic data and test it on the real data. **If the model evaluated in setting B, represents competitive results with the same model performed in setting (A)**, we can conclude the synthetic data has good predictive modeling similar to the real data.
 
+</details>
+
 <img src="https://github.com/astorfi/cor-gan/blob/master/imgs/datafidelity.png" width="50%" height="50%" />
 
-</details>
 
 ## Running the Code
 
