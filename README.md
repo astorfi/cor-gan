@@ -101,7 +101,7 @@ Here, we will assume the adversary *has the synthetically generated data as well
 
 <img src="https://github.com/astorfi/cor-gan/blob/master/imgs/datafidelity.png" width="50%" height="50%" />
 
-
+</details>
 
 ## Running the Code
 
