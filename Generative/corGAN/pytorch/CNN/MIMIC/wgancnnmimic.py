@@ -482,7 +482,7 @@ if opt.training:
             # Loss measures generator's ability to fool the discriminator
             a_loss = autoencoder_loss(recons_samples, real_samples)
 
-            # # Reset gradients (if you uncomment it, it would be a mess. Why?!!!!!!!!!!!!!!!)
+            # # Reset gradients (if you comment below line, it would be a mess. Think why?!!!!!!!!!)
             optimizer_A.zero_grad()
 
             a_loss.backward()
