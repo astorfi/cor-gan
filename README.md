@@ -7,8 +7,7 @@ Google product.
 
 
 For the following reason, this implementation *does not contain* the ``full implementation`` of the code:
-* Ongoing research
-* The restrictions regarding this work.
+* The privacy restrictions regarding this work.
 
 For a detailed description of the architecture please read [our paper](https://arxiv.org/abs/2001.09346). Using the code of this repository is allowed with **proper attribution**: Please cite the paper if you use the code from this repository in your work.
 
