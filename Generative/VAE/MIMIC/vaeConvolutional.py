@@ -10,6 +10,7 @@ import os
 import numpy as np
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
+import cmath
 
 parser = argparse.ArgumentParser(description='VAE')
 parser.add_argument('--batch-size', type=int, default=128, metavar='N',
@@ -249,7 +250,7 @@ def train(epoch):
         data = data.to(device)
         optimizer.zero_grad()
         recon_batch, mu, logvar = model(data)
-        assert (recon_batch != recon_batch).any() == False
+        assert cmath.isnan(recon_batch) == False
         loss = loss_function(recon_batch, data, mu, logvar)
         loss.backward()
         train_loss += loss.item()
