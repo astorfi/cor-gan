@@ -1,7 +1,6 @@
 import argparse
 import os
 import numpy as np
-import math
 import time
 import random
 import matplotlib.pyplot as plt
