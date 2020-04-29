@@ -2,6 +2,8 @@
 
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/astorfi/cor-gan.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/astorfi/cor-gan/context:python)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/astorfi/cor-gan.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/astorfi/cor-gan/alerts/)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/cor-gan-correlation-capturing-convolutional/synthetic-data-generation-on-uci-epileptic)](https://paperswithcode.com/sota/synthetic-data-generation-on-uci-epileptic?p=cor-gan-correlation-capturing-convolutional)
+
 
 This repository contains an implementation of "COR-GAN:
 Correlation-Capturing Convolutional Neural Networks for Generating
