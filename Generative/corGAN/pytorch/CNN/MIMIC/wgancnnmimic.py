@@ -19,11 +19,11 @@ parser = argparse.ArgumentParser()
 experimentName = os.path.splitext(os.path.basename(__file__))[0]
 
 parser.add_argument("--DATASETPATH", type=str,
-                    default=os.path.expanduser('~/data/PhisioNet/MIMIC/processed/out_binary.matrix'),
+                    default=os.path.expanduser('~/data/MIMIC/processed/out_binary.matrix'),
                     help="Dataset file")
 
-parser.add_argument("--n_epochs", type=int, default=300, help="number of epochs of training")
-parser.add_argument("--n_epochs_pretrain", type=int, default=500,
+parser.add_argument("--n_epochs", type=int, default=100, help="number of epochs of training")
+parser.add_argument("--n_epochs_pretrain", type=int, default=1,
                     help="number of epochs of pretraining the autoencoder")
 parser.add_argument("--batch_size", type=int, default=512, help="size of the batches")
 parser.add_argument("--lr", type=float, default=0.001, help="adam: learning rate")
@@ -51,10 +51,10 @@ parser.add_argument("--epoch_time_show", type=bool, default=True, help="interval
 parser.add_argument("--epoch_save_model_freq", type=int, default=100, help="number of epops per model save")
 parser.add_argument("--minibatch_averaging", type=bool, default=False, help="Minibatch averaging")
 
-parser.add_argument("--training", type=bool, default=False, help="Training status")
+parser.add_argument("--training", type=bool, default=True, help="Training status")
 parser.add_argument("--resume", type=bool, default=False, help="Training status")
 parser.add_argument("--finetuning", type=bool, default=False, help="Training status")
-parser.add_argument("--generate", type=bool, default=True, help="Generating Sythetic Data")
+parser.add_argument("--generate", type=bool, default=False, help="Generating Sythetic Data")
 parser.add_argument("--evaluate", type=bool, default=False, help="Evaluation status")
 parser.add_argument("--expPATH", type=str, default=os.path.expanduser('~/experiments/pytorch/model/'+experimentName),
                     help="Training status")
@@ -137,13 +137,13 @@ class Dataset:
 dataset_train_object = Dataset(data=trainData, transform=False)
 samplerRandom = torch.utils.data.sampler.RandomSampler(data_source=dataset_train_object, replacement=True)
 dataloader_train = DataLoader(dataset_train_object, batch_size=opt.batch_size,
-                              shuffle=False, num_workers=2, drop_last=True, sampler=samplerRandom)
+                              shuffle=False, num_workers=0, drop_last=True, sampler=samplerRandom)
 
 # Test data loader
 dataset_test_object = Dataset(data=testData, transform=False)
 samplerRandom = torch.utils.data.sampler.RandomSampler(data_source=dataset_test_object, replacement=True)
 dataloader_test = DataLoader(dataset_test_object, batch_size=opt.batch_size,
-                             shuffle=False, num_workers=1, drop_last=True, sampler=samplerRandom)
+                             shuffle=False, num_workers=0, drop_last=True, sampler=samplerRandom)
 
 # Generate random samples for test
 random_samples = next(iter(dataloader_test))
@@ -496,6 +496,54 @@ if opt.training:
             # Sample noise as generator input
             z = torch.randn(samples.shape[0], opt.latent_dim, device=device)
 
+            # ---------------------
+            #  Train Discriminator
+            # ---------------------
+
+            for p in discriminatorModel.parameters():  # reset requires_grad
+                p.requires_grad = True
+
+            # train the discriminator n_iter_D times
+            if gen_iterations < 25 or gen_iterations % 500 == 0:
+                n_iter_D = 100
+            else:
+                n_iter_D = opt.n_iter_D
+            j = 0
+            while j < n_iter_D:
+                j += 1
+
+                # clamp parameters to a cube
+                for p in discriminatorModel.parameters():
+                    p.data.clamp_(opt.clamp_lower, opt.clamp_upper)
+
+                # reset gradients of discriminator
+                optimizer_D.zero_grad()
+
+                errD_real = torch.mean(discriminatorModel(real_samples), dim=0)
+                errD_real.backward(one)
+
+                # Measure discriminator's ability to classify real from generated samples
+                # The detach() method constructs a new view on a tensor which is declared
+                # not to need gradients, i.e., it is to be excluded from further tracking of
+                # operations, and therefore the subgraph involving this view is not recorded.
+                # Refer to http://www.bnikolic.co.uk/blog/pytorch-detach.html.
+
+                # Sample noise as generator input
+                z = torch.randn(samples.shape[0], opt.latent_dim, device=device)
+
+                # Generate a batch of images
+                fake_samples = generatorModel(z)
+
+                # uncomment if there is no autoencoder
+                fake_samples = torch.squeeze(autoencoderDecoder(fake_samples.unsqueeze(dim=2)))
+
+                errD_fake = torch.mean(discriminatorModel(fake_samples.detach()),dim=0)
+                errD_fake.backward(mone)
+                errD = errD_real - errD_fake
+
+                # Optimizer step
+                optimizer_D.step()
+
             # -----------------
             #  Train Generator
             # -----------------
@@ -520,6 +568,9 @@ if opt.training:
             # Zero grads
             optimizer_G.zero_grad()
 
+            # Sample noise as generator input
+            z = torch.randn(samples.shape[0], opt.latent_dim, device=device)
+
             # Generate a batch of images
             fake_samples = generatorModel(z)
 
@@ -527,51 +578,12 @@ if opt.training:
             fake_samples = torch.squeeze(autoencoderDecoder(fake_samples.unsqueeze(dim=2)))
 
             # Loss measures generator's ability to fool the discriminator
-            errG = torch.mean(discriminatorModel(fake_samples).view(-1))
+            errG = torch.mean(discriminatorModel(fake_samples), dim=0)
             errG.backward(one)
 
             # read more at https://discuss.pytorch.org/t/why-do-we-need-to-set-the-gradients-manually-to-zero-in-pytorch/4903/4
             optimizer_G.step()
             gen_iterations += 1
-
-            # ---------------------
-            #  Train Discriminator
-            # ---------------------
-
-            for p in discriminatorModel.parameters():  # reset requires_grad
-                p.requires_grad = True
-
-            # train the discriminator n_iter_D times
-            if gen_iterations < 25 or gen_iterations % 500 == 0:
-                n_iter_D = 100
-            else:
-                n_iter_D = opt.n_iter_D
-            j = 0
-            while j < n_iter_D:
-                j += 1
-
-                # clamp parameters to a cube
-                for p in discriminatorModel.parameters():
-                    p.data.clamp_(opt.clamp_lower, opt.clamp_upper)
-
-                # reset gradients of discriminator
-                optimizer_D.zero_grad()
-
-                errD_real = torch.mean(discriminatorModel(real_samples).view(-1))
-                errD_real.backward(one)
-
-                # Measure discriminator's ability to classify real from generated samples
-                # The detach() method constructs a new view on a tensor which is declared
-                # not to need gradients, i.e., it is to be excluded from further tracking of
-                # operations, and therefore the subgraph involving this view is not recorded.
-                # Refer to http://www.bnikolic.co.uk/blog/pytorch-detach.html.
-
-                errD_fake = torch.mean(discriminatorModel(fake_samples.detach()).view(-1))
-                errD_fake.backward(mone)
-                errD = errD_real - errD_fake
-
-                # Optimizer step
-                optimizer_D.step()
 
         with torch.no_grad():
 
@@ -679,7 +691,7 @@ if opt.generate:
     #####################################
 
     # Loading the checkpoint
-    checkpoint = torch.load(os.path.join(opt.expPATH, "model_epoch_300.pth"))
+    checkpoint = torch.load(os.path.join(opt.expPATH, "model_epoch_100.pth"))
 
     # Load models
     generatorModel.load_state_dict(checkpoint['Generator_state_dict'])
