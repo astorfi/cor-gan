@@ -134,7 +134,7 @@ Here, we will assume the adversary *has the synthetically generated data as well
 * CUDA [strongly recommended]
 
 **NOTE:** PyTorch does a pretty good job in installing required packages but you should have installed CUDA according to PyTorch requirements.
-Please refer to [our paper](https://pytorch.org/) for further information.
+Please refer to [this link](https://pytorch.org/) for further information.
 
 ### Datasets
 
