@@ -151,7 +151,7 @@ One good source code for processing MIMIC-III can be found [here](https://github
 To check the implementation refer to the folder ``Generative`` and you will see the following implementations:
 
 * corGAN: The implementation of the paper with concolutional autoencoders and regular multi-layer perceptions for discriminator and generator.
-* corGAN: The implementation of the [medGAN paper](https://arxiv.org/abs/1703.06490) as one of the baselines. This is a reimplemetation of the medGAN in ``PyTorch`` as we could not fully reproduce their results with [their code](https://github.com/mp2893/medgan). Furthermore, **PyTorch is more flexible compare to TensorFlow for research!**
+* medGAN: The implementation of the [medGAN paper](https://arxiv.org/abs/1703.06490) as one of the baselines. This is a reimplemetation of the medGAN in ``PyTorch`` as we could not fully reproduce their results with [their code](https://github.com/mp2893/medgan). Furthermore, **PyTorch is more flexible compare to TensorFlow for research!**
 * VAE: One of the the baselines.
 
 ## Collaborators
